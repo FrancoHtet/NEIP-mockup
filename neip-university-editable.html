@@ -126,6 +126,10 @@ body{background:#eef5fc;color:var(--ink)}
 .account .profile-photo{width:36px;height:36px}
 .app{min-height:calc(100vh - 62px)}
 nav#nav{width:267px;padding:0 10px 20px;background:linear-gradient(180deg,#07396c 0%,#063361 72%,#0874ce 100%);color:#f3f8ff;position:sticky;top:62px;height:calc(100vh - 62px);overflow:auto;box-shadow:2px 0 12px #12385810}
+nav#nav{scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior:contain;scroll-behavior:smooth}
+nav#nav::-webkit-scrollbar{display:none;width:0;height:0}
+html{scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
 .side-profile{display:flex;align-items:center;gap:12px;padding:24px 12px 21px;margin-bottom:8px;border-bottom:1px solid #ffffff20}
 .side-avatar{width:58px;height:58px;flex:0 0 58px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#d9ecff,#fff);color:#1457a0;border:3px solid #ffffff40;font-size:18px;font-weight:800}
 .side-profile b{font-size:12px;color:white}.side-profile small{display:block;color:#d0e2f5;font-size:10px;line-height:1.55;margin-top:3px}
