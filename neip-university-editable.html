@@ -101,12 +101,29 @@ body{background:#eef5fc;color:var(--ink)}
 .global-link:hover,.global-link.on{color:#0758c8;font-weight:700}
 .global-link.on:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#0876ee;border-radius:2px 2px 0 0}
 .header-tools{display:flex;align-items:center;gap:15px;white-space:nowrap}
-.language{font-size:12px;color:#18385f;font-weight:600}
+.language-picker{position:relative}
+.language{display:inline-flex;align-items:center;gap:7px;border:0;border-radius:7px;background:transparent;color:#18385f;font:inherit;font-size:12px;font-weight:600;padding:8px 9px;cursor:pointer}
+.language:hover,.language[aria-expanded="true"]{background:#eff6fd;color:#0758c8}
+.language-menu{position:absolute;top:calc(100% + 8px);right:0;z-index:20;width:190px;padding:6px;background:#fff;border:1px solid #dce7f2;border-radius:10px;box-shadow:0 12px 30px #12345620}
+.language-menu[hidden]{display:none}
+.language-option{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px;border:0;border-radius:7px;background:#fff;color:#18385f;text-align:left;font:inherit;font-size:12px;cursor:pointer}
+.language-option:hover,.language-option:focus-visible{background:#eff6fd;outline:none}
+.language-option[aria-checked="true"]{color:#0758c8;font-weight:700;background:#f0f7ff}
+.language-option small{color:#73859a;font-size:10px;font-weight:400}
 .notify{position:relative;border:0;background:none;color:#123b68;font-size:18px;cursor:pointer;padding:4px}
 .notify em{position:absolute;right:-2px;top:-4px;width:15px;height:15px;border-radius:50%;display:grid;place-items:center;background:#ee3e50;color:#fff;font:700 9px/1 sans-serif;font-style:normal}
+.notification-wrap{position:relative}
+.notification-menu{position:absolute;top:calc(100% + 13px);right:-8px;z-index:20;width:320px;padding:8px;background:#fff;border:1px solid #dce7f2;border-radius:11px;box-shadow:0 14px 32px #12345624}
+.notification-menu[hidden]{display:none}
+.notification-heading{padding:8px 10px 10px;color:#17365d;font-size:13px;font-weight:700;border-bottom:1px solid #e7edf4}
+.notification-item{display:block;width:100%;padding:10px;border:0;border-radius:7px;background:#fff;color:#18385f;text-align:left;font:inherit;cursor:pointer}
+.notification-item:hover,.notification-item:focus-visible{background:#eff6fd;outline:none}
+.notification-item b{display:block;font-size:11px}.notification-item small{display:block;margin-top:3px;color:#687e97;font-size:10px}
+.profile-photo{display:block;width:36px;height:36px;flex:0 0 auto;border:2px solid #dbeafa;border-radius:50%;object-fit:cover;background:#e8f2fc}
+.side-avatar{width:58px;height:58px;flex:0 0 58px;border:3px solid #ffffff80;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px #001f421c}
 .account{display:flex;align-items:center;gap:9px;border-left:1px solid #e8edf3;padding-left:16px;color:#17365d;font-size:11px;line-height:1.35}
 .account small{display:block;color:#637790;font-size:10px}
-.account .av{width:34px;height:34px;background:#e8f2fc;border:1px solid #dce9f6}
+.account .profile-photo{width:36px;height:36px}
 .app{min-height:calc(100vh - 62px)}
 nav#nav{width:267px;padding:0 10px 20px;background:linear-gradient(180deg,#07396c 0%,#063361 72%,#0874ce 100%);color:#f3f8ff;position:sticky;top:62px;height:calc(100vh - 62px);overflow:auto;box-shadow:2px 0 12px #12385810}
 .side-profile{display:flex;align-items:center;gap:12px;padding:24px 12px 21px;margin-bottom:8px;border-bottom:1px solid #ffffff20}
@@ -124,7 +141,7 @@ h1{color:#123b6c}h2{color:#153b69}
 .c{border-color:#e0eaf4;border-radius:10px;box-shadow:0 2px 8px #16416a08}
 .svc{background:#fff;border-color:#e1eaf4}
 @media(max-width:1100px){.site-header{gap:18px;padding:0 18px}.brand{min-width:260px}.brand span{display:none}.global-links{gap:18px}}
-@media(max-width:900px){.site-header{position:sticky;top:0;height:58px;padding:0 14px;gap:12px}.brand{min-width:0}.brand img{width:105px;height:36px}.brand span,.global-links,.language{display:none}.header-tools{margin-left:auto}.app{flex-direction:column;min-height:calc(100vh - 58px)}nav#nav{position:relative;top:auto;width:100%;height:auto;display:flex;align-items:center;overflow-x:auto;padding:7px 9px;background:#07396c;z-index:6}nav#nav .side-profile{display:none}nav#nav button{width:auto;flex:0 0 auto;white-space:nowrap}.top{top:58px}.content{padding:18px 14px}.g32{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.site-header{position:sticky;top:0;height:58px;padding:0 14px;gap:12px}.brand{min-width:0}.brand img{width:105px;height:36px}.brand span,.global-links{display:none}.header-tools{margin-left:auto;gap:9px}.app{flex-direction:column;min-height:calc(100vh - 58px)}nav#nav{position:relative;top:auto;width:100%;height:auto;display:flex;align-items:center;overflow-x:auto;padding:7px 9px;background:#07396c;z-index:6}nav#nav .side-profile{display:none}nav#nav button{width:auto;flex:0 0 auto;white-space:nowrap}.top{top:58px}.content{padding:18px 14px}.g32{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.account{padding-left:9px;gap:6px}.account small{display:none}.account{font-size:10px}.content{padding:14px 10px}.g32,.g4,.g3,.g2{grid-template-columns:1fr}}
 </style></head><body>
 <header class="site-header">
@@ -136,7 +153,7 @@ h1{color:#123b6c}h2{color:#153b69}
 <button class="global-link" data-go="Learning" data-top-go="Learning">Resources</button>
 <button class="global-link" data-go="Help & Support" data-top-go="Help & Support">Contact</button>
 </div>
-<div class="header-tools"><span class="language">EN⌄</span><button class="notify" aria-label="Notifications">🔔<em>3</em></button><div class="account"><div class="av">SU</div><span>Student User<small>Year 3 Student</small></span>⌄</div></div>
+<div class="header-tools"><div class="language-picker"><button class="language" id="language-toggle" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="language-menu"><span id="language-current">EN</span><span aria-hidden="true">⌄</span></button><div class="language-menu" id="language-menu" role="menu" aria-label="Choose display language" hidden><button class="language-option" type="button" role="menuitemradio" aria-checked="true" data-language-code="EN"><span>English</span><small>EN</small></button><button class="language-option" type="button" role="menuitemradio" aria-checked="false" data-language-code="MY"><span>မြန်မာ (Burmese)</span><small>MY</small></button></div></div><div class="notification-wrap"><button class="notify" id="notification-toggle" type="button" aria-label="Notifications, 3 unread" aria-haspopup="menu" aria-expanded="false" aria-controls="notification-menu">🔔<em>3</em></button><div class="notification-menu" id="notification-menu" role="menu" aria-label="Notifications" hidden><div class="notification-heading">Notifications</div><button class="notification-item" type="button" role="menuitem" data-go="Messages"><b>Transcript request</b><small>Received · 2 days ago</small></button><button class="notification-item" type="button" role="menuitem" data-go="Messages"><b>Hostel request</b><small>Under review · 4 days ago</small></button><button class="notification-item" type="button" role="menuitem" data-go="Messages"><b>Fee receipt</b><small>Available · Last week</small></button></div></div><div class="account"><img class="profile-photo" src="profile-placeholder.svg" alt="Profile placeholder"><span>Student User<small>Year 3 Student</small></span>⌄</div></div>
 </header>
 <div class="app"><nav id="nav"></nav>
 <main><div class="top"><span class="crumb" id="crumb"></span><span class="sp"></span><button class="pill" id="theme">Dark/Light Theme</button></div>
@@ -389,7 +406,7 @@ h1{color:#123b6c}h2{color:#153b69}
 /* You normally do not need to edit anything below this line. */
 const pages=[...document.querySelectorAll('.page')];
 const nav=document.getElementById('nav');
-nav.innerHTML='<div class="side-profile"><div class="side-avatar">SU</div><div><b>Student User</b><small>Student ID: NEIP-UNI-004217<br>Yangon Technological University<br>Year 3 · Semester 2</small></div></div>'+
+nav.innerHTML='<div class="side-profile"><img class="side-avatar" src="profile-placeholder.svg" alt="Profile placeholder"><div><b>Student User</b><small>Student ID: NEIP-UNI-004217<br>Yangon Technological University<br>Year 3 · Semester 2</small></div></div>'+
  pages.map(p=>`<button data-go="${p.dataset.title}"><span class="nav-icon">${p.dataset.icon||''}</span><span>${p.dataset.title}</span>${p.dataset.badge?`<span class="bd">${p.dataset.badge}</span>`:''}</button>`).join('');
 document.querySelectorAll('.trk').forEach(t=>{t.innerHTML=['Submitted','Under review','Approved','Completed'].map((s,i)=>`<span class="${i<+t.dataset.step?'d':''}">${s}</span>`).join('')});
 function go(name){
@@ -402,6 +419,18 @@ function go(name){
   scrollTo(0,0);
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go)});
+const languageToggle=document.getElementById('language-toggle');
+const languageMenu=document.getElementById('language-menu');
+languageToggle.addEventListener('click',()=>{const open=languageToggle.getAttribute('aria-expanded')==='true';languageToggle.setAttribute('aria-expanded',String(!open));languageMenu.hidden=open});
+languageMenu.addEventListener('click',e=>{const option=e.target.closest('[data-language-code]');if(!option)return;document.getElementById('language-current').textContent=option.dataset.languageCode;languageMenu.querySelectorAll('[data-language-code]').forEach(item=>item.setAttribute('aria-checked',String(item===option)));languageToggle.setAttribute('aria-expanded','false');languageMenu.hidden=true});
+document.addEventListener('click',e=>{if(!e.target.closest('.language-picker')){languageToggle.setAttribute('aria-expanded','false');languageMenu.hidden=true}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!languageMenu.hidden){languageToggle.setAttribute('aria-expanded','false');languageMenu.hidden=true;languageToggle.focus()}});
+const notificationToggle=document.getElementById('notification-toggle');
+const notificationMenu=document.getElementById('notification-menu');
+notificationToggle.addEventListener('click',()=>{const open=notificationToggle.getAttribute('aria-expanded')==='true';notificationToggle.setAttribute('aria-expanded',String(!open));notificationMenu.hidden=open});
+notificationMenu.addEventListener('click',()=>{notificationToggle.setAttribute('aria-expanded','false');notificationMenu.hidden=true});
+document.addEventListener('click',e=>{if(!e.target.closest('.notification-wrap')){notificationToggle.setAttribute('aria-expanded','false');notificationMenu.hidden=true}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!notificationMenu.hidden){notificationToggle.setAttribute('aria-expanded','false');notificationMenu.hidden=true;notificationToggle.focus()}});
 document.getElementById('theme').onclick=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='dark'?'light':'dark'};
 go(pages[0].dataset.title);
 </script></body></html>
