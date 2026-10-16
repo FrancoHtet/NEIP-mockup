@@ -89,9 +89,57 @@ h1{font-size:25px;letter-spacing:-.035em;color:#102746}h2{font-size:13px;letter-
 input,textarea{background:#fbfcfe;border-color:#dfe7f0}
 @media(max-width:900px){nav{width:100%;box-shadow:none}.content{padding:19px 16px}.top{padding:9px 16px}.g32{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.content{padding:15px 12px}.g32,.g4,.g3,.g2{grid-template-columns:1fr}.hero{align-items:flex-start}.ban{display:none}}
+/* Institutional header and reference-matched student sidebar */
+:root{--bg:#f0f6fc;--ink:#102d55;--mut:#586f8d;--line:#dce7f2;--pri:#0876ee;--pri2:#e8f3ff;--side:#07396c}
+body{background:#eef5fc;color:var(--ink)}
+.site-header{height:62px;display:flex;align-items:center;gap:30px;padding:0 28px;background:#fff;border-bottom:1px solid #e2eaf2;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px #193c5b0b}
+.brand{display:flex;align-items:center;gap:14px;min-width:340px;color:#12365f;text-decoration:none}
+.brand img{display:block;width:122px;height:39px;object-fit:contain}
+.brand span{font-size:12px;font-weight:700;white-space:nowrap}.brand small{display:block;font-size:9px;font-weight:500;color:#566c86;margin-top:2px}
+.global-links{display:flex;align-items:center;justify-content:center;gap:26px;flex:1;height:100%}
+.global-link{height:100%;position:relative;border:0;background:none;color:#425873;font:inherit;font-size:12px;padding:0 2px;white-space:nowrap;cursor:pointer}
+.global-link:hover,.global-link.on{color:#0758c8;font-weight:700}
+.global-link.on:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#0876ee;border-radius:2px 2px 0 0}
+.header-tools{display:flex;align-items:center;gap:15px;white-space:nowrap}
+.language{font-size:12px;color:#18385f;font-weight:600}
+.notify{position:relative;border:0;background:none;color:#123b68;font-size:18px;cursor:pointer;padding:4px}
+.notify em{position:absolute;right:-2px;top:-4px;width:15px;height:15px;border-radius:50%;display:grid;place-items:center;background:#ee3e50;color:#fff;font:700 9px/1 sans-serif;font-style:normal}
+.account{display:flex;align-items:center;gap:9px;border-left:1px solid #e8edf3;padding-left:16px;color:#17365d;font-size:11px;line-height:1.35}
+.account small{display:block;color:#637790;font-size:10px}
+.account .av{width:34px;height:34px;background:#e8f2fc;border:1px solid #dce9f6}
+.app{min-height:calc(100vh - 62px)}
+nav#nav{width:267px;padding:0 10px 20px;background:linear-gradient(180deg,#07396c 0%,#063361 72%,#0874ce 100%);color:#f3f8ff;position:sticky;top:62px;height:calc(100vh - 62px);overflow:auto;box-shadow:2px 0 12px #12385810}
+.side-profile{display:flex;align-items:center;gap:12px;padding:24px 12px 21px;margin-bottom:8px;border-bottom:1px solid #ffffff20}
+.side-avatar{width:58px;height:58px;flex:0 0 58px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#d9ecff,#fff);color:#1457a0;border:3px solid #ffffff40;font-size:18px;font-weight:800}
+.side-profile b{font-size:12px;color:white}.side-profile small{display:block;color:#d0e2f5;font-size:10px;line-height:1.55;margin-top:3px}
+nav#nav button{display:flex;align-items:center;gap:12px;min-height:43px;margin:3px 0;padding:9px 12px;border-radius:8px;color:#edf5ff;font-size:12px;font-weight:500;transition:background .15s,color .15s}
+nav#nav button:hover{background:#ffffff18}nav#nav button.on{background:linear-gradient(90deg,#1684ff,#0b70e4);color:#fff;font-weight:700;box-shadow:0 5px 13px #002c5c45}
+nav#nav .nav-icon{width:21px;flex:0 0 21px;text-align:center;font-size:17px;filter:grayscale(1) brightness(0) invert(1)}
+nav#nav .bd{margin-left:auto;float:none;padding:2px 6px}
+.top{height:48px;padding:8px 24px;background:#fff;border-bottom-color:#e4ebf3;box-shadow:none;position:sticky;top:62px;z-index:5}
+.crumb{font-size:11px;color:#526a85}.pill{font-size:11px;padding:5px 9px}.av{width:32px;height:32px}
+.content{max-width:none;width:100%;padding:25px 24px 34px;margin:0;background:#f1f7fd}
+.page{max-width:1320px;margin:0 auto}
+h1{color:#123b6c}h2{color:#153b69}
+.c{border-color:#e0eaf4;border-radius:10px;box-shadow:0 2px 8px #16416a08}
+.svc{background:#fff;border-color:#e1eaf4}
+@media(max-width:1100px){.site-header{gap:18px;padding:0 18px}.brand{min-width:260px}.brand span{display:none}.global-links{gap:18px}}
+@media(max-width:900px){.site-header{position:sticky;top:0;height:58px;padding:0 14px;gap:12px}.brand{min-width:0}.brand img{width:105px;height:36px}.brand span,.global-links,.language{display:none}.header-tools{margin-left:auto}.app{flex-direction:column;min-height:calc(100vh - 58px)}nav#nav{position:relative;top:auto;width:100%;height:auto;display:flex;align-items:center;overflow-x:auto;padding:7px 9px;background:#07396c;z-index:6}nav#nav .side-profile{display:none}nav#nav button{width:auto;flex:0 0 auto;white-space:nowrap}.top{top:58px}.content{padding:18px 14px}.g32{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.account{padding-left:9px;gap:6px}.account small{display:none}.account{font-size:10px}.content{padding:14px 10px}.g32,.g4,.g3,.g2{grid-template-columns:1fr}}
 </style></head><body>
+<header class="site-header">
+<a class="brand" href="#" aria-label="NEIP home"><img src="NEIP logo.png" alt="NEIP"><span>National Education Information Platform<small>Ministry of Education, Myanmar</small></span></a>
+<div class="global-links" aria-label="Main navigation">
+<button class="global-link" data-go="Dashboard" data-top-go="Dashboard">Home</button>
+<button class="global-link on" data-go="Verification" data-top-go="Student Services">Student Services</button>
+<button class="global-link" data-go="Messages" data-top-go="Messages">Announcements</button>
+<button class="global-link" data-go="Learning" data-top-go="Learning">Resources</button>
+<button class="global-link" data-go="Help & Support" data-top-go="Help & Support">Contact</button>
+</div>
+<div class="header-tools"><span class="language">EN⌄</span><button class="notify" aria-label="Notifications">🔔<em>3</em></button><div class="account"><div class="av">SU</div><span>Student User<small>Year 3 Student</small></span>⌄</div></div>
+</header>
 <div class="app"><nav id="nav"></nav>
-<main><div class="top"><span class="crumb" id="crumb"></span><span class="sp"></span><button class="pill" id="theme">Dark/Light Theme</button><button class="pill">🔔 3</button><div class="av">SU</div></div>
+<main><div class="top"><span class="crumb" id="crumb"></span><span class="sp"></span><button class="pill" id="theme">Dark/Light Theme</button></div>
 <div class="content">
 
 <!-- ===================== PAGES START HERE ===================== -->
@@ -341,13 +389,15 @@ input,textarea{background:#fbfcfe;border-color:#dfe7f0}
 /* You normally do not need to edit anything below this line. */
 const pages=[...document.querySelectorAll('.page')];
 const nav=document.getElementById('nav');
-nav.innerHTML='<div class="logo">NEIP<small>National Education Information Platform</small></div>'+
- pages.map(p=>`<button data-go="${p.dataset.title}">${p.dataset.icon||''} ${p.dataset.title}${p.dataset.badge?`<span class="bd">${p.dataset.badge}</span>`:''}</button>`).join('');
+nav.innerHTML='<div class="side-profile"><div class="side-avatar">SU</div><div><b>Student User</b><small>Student ID: NEIP-UNI-004217<br>Yangon Technological University<br>Year 3 · Semester 2</small></div></div>'+
+ pages.map(p=>`<button data-go="${p.dataset.title}"><span class="nav-icon">${p.dataset.icon||''}</span><span>${p.dataset.title}</span>${p.dataset.badge?`<span class="bd">${p.dataset.badge}</span>`:''}</button>`).join('');
 document.querySelectorAll('.trk').forEach(t=>{t.innerHTML=['Submitted','Under review','Approved','Completed'].map((s,i)=>`<span class="${i<+t.dataset.step?'d':''}">${s}</span>`).join('')});
 function go(name){
   const target=pages.find(p=>p.dataset.title===name)||pages[0];
   pages.forEach(p=>p.classList.toggle('show',p===target));
   nav.querySelectorAll('button[data-go]').forEach(b=>b.classList.toggle('on',b.dataset.go===target.dataset.title));
+  const topSection=['Dashboard','Messages','Learning','Help & Support'].includes(target.dataset.title)?target.dataset.title:'Student Services';
+  document.querySelectorAll('.global-link').forEach(b=>b.classList.toggle('on',b.dataset.topGo===topSection));
   document.getElementById('crumb').textContent='Student Portal / '+target.dataset.title;
   scrollTo(0,0);
 }
