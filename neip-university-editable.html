@@ -64,9 +64,34 @@ label{display:block;margin-bottom:10px;color:var(--mut);font-size:12px}
 input,textarea{display:block;width:100%;margin-top:3px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
 @media(max-width:900px){.app{flex-direction:column}nav{width:100%;height:auto;z-index:6;display:flex;gap:4px;overflow-x:auto;padding:8px}nav .logo{display:none}nav button{white-space:nowrap;width:auto;margin:0}.top{position:static;padding:10px 14px}.content{padding:14px}.g4,.g3,.g32{grid-template-columns:repeat(2,1fr)}.ban{display:none}}
 @media(max-width:560px){.g4,.g3,.g2,.g32{grid-template-columns:1fr}}
+</style>
+<style>
+/* Polished dashboard treatment */
+:root{--bg:#f4f7fb;--card:#fff;--ink:#102746;--mut:#637690;--line:#e2eaf3;--side:#0b2747;--pri:#1769c2;--pri2:#eaf3fd;--ok:#07845f;--okb:#e5f6ef;--wa:#a85d00;--wab:#fff3df;--in:#1769c2;--inb:#eaf3fd;--er:#bd3e46;--erb:#fcebed}
+body{font-size:13px;background:var(--bg);letter-spacing:.005em}
+nav{width:238px;padding:19px 13px;background:linear-gradient(180deg,#0c2b4c,#09213c);box-shadow:5px 0 22px #0b27470d}
+.logo{font-size:23px;letter-spacing:-.04em;padding:5px 11px 21px}.logo small{font-size:10px;line-height:1.5;letter-spacing:0;color:#a9bdd5;margin-top:3px}
+nav button{padding:10px 12px;margin:2px 0;border-radius:8px;color:#d6e2f0;font-size:12px;transition:background .18s,color .18s}
+nav button:hover{background:#ffffff12}nav button.on{background:#1769c2;color:white;box-shadow:0 5px 14px #061b3340}
+.top{height:58px;padding:9px 28px;background:#fff;border-bottom-color:#e8edf4;box-shadow:0 2px 8px #18324f08}
+.crumb{font-size:12px;color:#536981}.pill{border-color:#e4eaf2;border-radius:7px;padding:6px 10px;font-size:12px}.demo{padding:5px 11px;border-radius:6px;font-size:10px;letter-spacing:.045em}
+.content{max-width:1320px;padding:25px 30px 32px;margin:0 auto}
+h1{font-size:25px;letter-spacing:-.035em;color:#102746}h2{font-size:13px;letter-spacing:-.01em;color:#142f50}
+.sub{color:#687d96}.c{border-color:#e4eaf2;border-radius:10px;padding:15px;box-shadow:0 2px 8px #17385806;transition:box-shadow .18s,border-color .18s}
+.g{gap:12px;margin-bottom:12px}.g>.c{margin-bottom:0}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g32{grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr)}
+.hero{gap:16px;min-height:112px;padding:17px 19px}.big{width:58px;height:58px;font-size:22px;background:#e8f1fb;border:1px solid #dce9f7}
+.ban{width:170px;height:72px;border-radius:8px;background:linear-gradient(135deg,#2876c7,#102f53);font-size:12px}
+.v{font-size:19px;letter-spacing:-.025em}.l{font-size:10px;letter-spacing:.06em;font-weight:700;color:#71849c}
+.svc{min-height:69px;padding:11px 12px;background:#fff;border-color:#e5ebf3;border-radius:8px;transition:transform .15s,border-color .15s,box-shadow .15s}
+.svc:hover{border-color:#9fc4eb;box-shadow:0 5px 14px #21486a10;transform:translateY(-1px)}.svc b{font-size:12px;color:#173354}.svc span{display:block;margin-top:3px;font-size:11px;line-height:1.4;color:#6b7e94}
+.row{padding:10px 0}.chip{font-size:10px;padding:3px 8px;border-radius:5px}.tl{margin-top:10px}.tl div{font-size:10px}
+.bar{height:7px}table th{font-size:10px;letter-spacing:.04em;text-transform:uppercase}table td{font-size:12px;color:#314a67}
+input,textarea{background:#fbfcfe;border-color:#dfe7f0}
+@media(max-width:900px){nav{width:100%;box-shadow:none}.content{padding:19px 16px}.top{padding:9px 16px}.g32{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.content{padding:15px 12px}.g32,.g4,.g3,.g2{grid-template-columns:1fr}.hero{align-items:flex-start}.ban{display:none}}
 </style></head><body>
 <div class="app"><nav id="nav"></nav>
-<main><div class="top"><span class="crumb" id="crumb"></span><span class="sp"></span><span class="demo">DEMO DATA</span><button class="pill" id="theme">Theme</button><button class="pill">🔔 3</button><div class="av">SU</div></div>
+<main><div class="top"><span class="crumb" id="crumb"></span><span class="sp"></span><button class="pill" id="theme">Dark/Light Theme</button><button class="pill">🔔 3</button><div class="av">SU</div></div>
 <div class="content">
 
 <!-- ===================== PAGES START HERE ===================== -->
@@ -74,9 +99,9 @@ input,textarea{display:block;width:100%;margin-top:3px;padding:8px;border:1px so
 <section class="page" data-title="Dashboard" data-icon="🏠">
 <h1>Student Dashboard</h1><p class="sub">Your university services in one place.</p>
 <div class="c hero"><div class="big">SU</div>
-<div><b style="font-size:17px">Student User</b> <span class="chip ok">Active</span><div class="sub" style="margin:4px 0 0">Student ID: NEIP-UNI-004217<br>Yangon Technological University · Faculty of Computing<br>BSc Computer Science · Software specialization</div></div>
-<div><div class="l">Academic Year</div><b>2025 – 2026</b></div><div><div class="l">Year / Semester</div><b>Year 3 · Sem 2</b></div><div><div class="l">GPA</div><b>3.42</b></div>
-<div class="ban">Yangon Technological University</div></div>
+<div style="min-width:210px;flex:1"><b style="font-size:15px">Student User</b> <span class="chip ok">Active</span><div class="sub" style="margin:4px 0 0;line-height:1.65">Student ID: NEIP-UNI-004217<br>Yangon Technological University · Faculty of Computing<br>BSc Computer Science · Software specialization</div></div>
+<div style="min-width:100px"><div class="l">ACADEMIC YEAR</div><b>2025 – 2026</b></div><div style="min-width:105px"><div class="l">YEAR / SEMESTER</div><b>Year 3 · Sem 2</b></div><div style="min-width:60px"><div class="l">GPA</div><b>3.42</b></div>
+<div class="ban">Yangon Technological<br>University</div></div>
 
 <div class="g g4">
 <div class="c"><div class="l">ENROLMENT</div><div class="v ok">Active</div></div>
@@ -86,19 +111,7 @@ input,textarea{display:block;width:100%;margin-top:3px;padding:8px;border:1px so
 </div>
 
 <div class="g g32">
-<div class="c"><h2>Today · Next up</h2><div class="sc"><table>
-<tr><th>Time</th><th>Item</th><th>Type</th></tr>
-<tr><td>09:00</td><td>Data Structures — Live class</td><td>Class</td></tr>
-<tr><td>13:00</td><td>Database Quiz 3</td><td>Quiz</td></tr>
-<tr><td>Fri</td><td>Software Eng. assignment due</td><td>Deadline</td></tr>
-<tr><td>Nov 18</td><td>Mid-term: Algorithms</td><td>Exam</td></tr></table></div></div>
-<div class="c"><h2>Recent Activity</h2>
-<div class="row"><div><b>Transcript request</b><br><span class="sub">2 days ago</span></div><span class="chip in">Received</span></div>
-<div class="row"><div><b>Hostel request</b><br><span class="sub">4 days ago</span></div><span class="chip wa">Under review</span></div>
-<div class="row"><div><b>Fee receipt</b><br><span class="sub">Last week</span></div><span class="chip ok">Available</span></div></div>
-</div>
-
-<div class="c"><h2>Quick Services</h2><div class="g g3" style="margin:0">
+<div class="c"><div class="row" style="padding-top:0"><h2>Quick Services</h2><span class="pr" style="font-size:11px">View all services →</span></div><div class="g g3" style="margin:0">
 <button class="svc" data-go="Fees & Payments"><b>Fee Payment</b><span>Pay fees, view history</span></button>
 <button class="svc" data-go="Exams & Results"><b>Exam Results</b><span>Results and transcripts</span></button>
 <button class="svc" data-go="Verification"><b>Certificate Verification</b><span>Request and verify</span></button>
@@ -106,6 +119,11 @@ input,textarea{display:block;width:100%;margin-top:3px;padding:8px;border:1px so
 <button class="svc" data-go="Campus Life"><b>Hostel & Transport</b><span>Bus, hostel, meals</span></button>
 <button class="svc" data-go="Student Affairs"><b>Leave / Transfer</b><span>Student affairs requests</span></button>
 </div></div>
+<div class="c"><div class="row" style="padding-top:0"><h2>Recent Activity</h2><span class="pr" style="font-size:11px">View all →</span></div>
+<div class="row"><div><b>Transcript request</b><br><span class="sub">2 days ago</span></div><span class="chip in">Received</span></div>
+<div class="row"><div><b>Hostel request</b><br><span class="sub">4 days ago</span></div><span class="chip wa">Under review</span></div>
+<div class="row"><div><b>Fee receipt</b><br><span class="sub">Last week</span></div><span class="chip ok">Available</span></div></div>
+</div>
 
 <div class="g g32">
 <div class="c"><h2>My Education Record</h2>
