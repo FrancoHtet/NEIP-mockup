@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>NEIP University Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+=====================  HOW TO EDIT THIS FILE  =====================
+1. MENU ITEMS: every <section class="page"> in the PAGES area below is one sidebar item.
+   - Add a page   -> copy a whole <section>...</section> block, change data-title and the content.
+   - Remove a page-> delete its <section> block.
+   - Reorder      -> move the <section> blocks up or down.
+   - Rename       -> change data-title (and any data-go="..." links that point to it).
+   - Icon / badge -> data-icon="🏠"  data-badge="3"
+2. CONTENT: inside each section it is plain HTML. Change text directly.
+3. LINKS BETWEEN PAGES: <button data-go="Fees & Payments"> opens that page (name must match data-title).
+4. COLORS: edit the values in :root { ... } in the CSS below.
+5. STATUS TAGS: <span class="chip ok|wa|in|er">Text</span>  (green / amber / blue / red)
+6. PROGRESS TRACKER: <div class="trk" data-step="2"></div>  (0-4 steps filled)
+7. COLUMNS: <div class="g g2|g3|g4|g32"> ... </div>   (g32 = wide + narrow)
+====================================================================
+-->
+<style>
+:root{--bg:#f2f5fa;--card:#fff;--ink:#14233b;--mut:#64738a;--line:#e3e9f2;--side:#0d2b52;--pri:#1763d1;--pri2:#e6effc;--ok:#0f8a5f;--okb:#e1f5ec;--wa:#b86a00;--wab:#fdf0dc;--in:#1763d1;--inb:#e6effc;--er:#c23a3a;--erb:#fbe5e5}
+:root[data-theme="dark"]{--bg:#0b1220;--card:#131d30;--ink:#e6edf8;--mut:#93a3bb;--line:#243350;--side:#081a33;--pri:#5b9bff;--pri2:#1b2c4c;--ok:#4cc79a;--okb:#123a2e;--wa:#f0b35a;--wab:#3b2c10;--in:#7db0ff;--inb:#1b2c4c;--er:#ff8a8a;--erb:#401a1a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 "Segoe UI","Noto Sans","Noto Sans Myanmar",system-ui,sans-serif}
+.app{display:flex;min-height:100vh}
+nav{width:230px;background:var(--side);color:#cfdcf1;padding:16px 12px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow:auto}
+.logo{font-weight:800;font-size:22px;color:#fff;padding:4px 10px}.logo small{display:block;font-weight:400;font-size:10px;color:#9fb4d6}
+nav button{display:block;width:100%;text-align:left;background:none;border:0;color:inherit;padding:10px 12px;border-radius:8px;font:inherit;cursor:pointer;margin-top:2px}
+nav button:hover{background:#ffffff14}nav button.on{background:var(--pri);color:#fff;font-weight:600}
+nav .bd{float:right;background:#e5484d;color:#fff;border-radius:9px;font-size:11px;padding:0 6px}
+main{flex:1;min-width:0}
+.top{display:flex;align-items:center;gap:10px;background:var(--card);border-bottom:1px solid var(--line);padding:10px 24px;position:sticky;top:0;z-index:5}
+.sp{flex:1}.crumb{color:var(--mut)}
+.pill{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:5px 10px;font:inherit;cursor:pointer}
+.av{width:34px;height:34px;border-radius:50%;background:var(--pri2);color:var(--pri);display:grid;place-items:center;font-weight:700}
+.demo{background:var(--wab);color:var(--wa);border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600}
+.content{padding:24px;max-width:1180px}
+.page{display:none}.page.show{display:block}
+h1{font-size:26px;margin:0}.sub{color:var(--mut);margin:2px 0 18px}h2{font-size:15px;margin:0 0 12px}
+.g{display:grid;gap:14px;margin-bottom:14px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g32{grid-template-columns:1.6fr 1fr}
+.c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}.g>.c{margin-bottom:0}
+.l{color:var(--mut);font-size:12px}.v{font-size:22px;font-weight:700;margin-top:2px}
+.ok{color:var(--ok)}.pr{color:var(--pri)}
+.chip{display:inline-block;border-radius:6px;padding:2px 9px;font-size:12px;font-weight:600}
+.chip.ok{background:var(--okb);color:var(--ok)}.chip.wa{background:var(--wab);color:var(--wa)}.chip.in{background:var(--inb);color:var(--in)}.chip.er{background:var(--erb);color:var(--er)}
+.sc{overflow-x:auto}table{width:100%;border-collapse:collapse}th{text-align:left;color:var(--mut);font-weight:600;font-size:12px}th,td{padding:9px 8px;border-bottom:1px solid var(--line)}tr:last-child td{border:0}
+.row{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}
+.svc{display:block;text-align:left;width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:12px;font:inherit;cursor:pointer}
+.svc b{display:block}.svc span{color:var(--mut);font-size:12px}.svc:hover{border-color:var(--pri)}
+.hero{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.big{width:76px;height:76px;border-radius:50%;background:var(--pri2);color:var(--pri);display:grid;place-items:center;font-size:30px;font-weight:700}
+.ban{margin-left:auto;width:230px;height:100px;border-radius:10px;background:linear-gradient(135deg,#1763d1,#0d2b52);color:#fff;display:grid;place-items:center;text-align:center;font-weight:600;padding:8px}
+.bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%;background:var(--pri)}
+.tl{display:flex;text-align:center;font-size:12px;position:relative;margin-top:6px}
+.tl:before{content:"";position:absolute;top:9px;left:8%;right:8%;height:2px;background:var(--line)}
+.tl div{position:relative;flex:1;color:var(--mut)}.tl div:before{content:"";display:block;width:18px;height:18px;border-radius:50%;margin:0 auto 6px;background:var(--card);border:2px solid var(--line);position:relative}
+.tl .d:before{background:var(--pri);border-color:var(--pri)}.tl .n:before{border:5px solid var(--pri)}.tl .n,.tl .d{color:var(--ink)}
+.trk{display:flex;gap:6px;margin:8px 0}.trk span{flex:1;font-size:11px;color:var(--mut);border-top:3px solid var(--line);padding-top:4px}.trk .d{border-color:var(--pri);color:var(--ink)}
+.tt{display:grid;grid-template-columns:60px repeat(5,1fr);gap:4px;font-size:12px}.tt div{padding:6px;border-radius:6px;background:var(--bg)}.tt .h{background:none;color:var(--mut);font-weight:600}.tt .cl{background:var(--pri2);color:var(--pri)}
+.dot{width:8px;height:8px;border-radius:50%;background:#e5484d;display:inline-block;margin-right:8px}
+.btn{background:var(--pri);color:#fff;border:0;border-radius:8px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer}.btn.s{background:var(--pri2);color:var(--pri)}
+.qr{width:84px;height:84px;margin:0 auto 10px;background:repeating-conic-gradient(var(--ink) 0 25%,var(--card) 0 50%) 0 0/14px 14px;border-radius:6px;border:6px solid var(--card);outline:1px solid var(--line)}
+.ctr{text-align:center}
+label{display:block;margin-bottom:10px;color:var(--mut);font-size:12px}
+input,textarea{display:block;width:100%;margin-top:3px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+@media(max-width:900px){.app{flex-direction:column}nav{width:100%;height:auto;z-index:6;display:flex;gap:4px;overflow-x:auto;padding:8px}nav .logo{display:none}nav button{white-space:nowrap;width:auto;margin:0}.top{position:static;padding:10px 14px}.content{padding:14px}.g4,.g3,.g32{grid-template-columns:repeat(2,1fr)}.ban{display:none}}
+@media(max-width:560px){.g4,.g3,.g2,.g32{grid-template-columns:1fr}}
+</style></head><body>
+<div class="app"><nav id="nav"></nav>
+<main><div class="top"><span class="crumb" id="crumb"></span><span class="sp"></span><span class="demo">DEMO DATA</span><button class="pill" id="theme">Theme</button><button class="pill">🔔 3</button><div class="av">SU</div></div>
+<div class="content">
+
+<!-- ===================== PAGES START HERE ===================== -->
+
+<section class="page" data-title="Dashboard" data-icon="🏠">
+<h1>Student Dashboard</h1><p class="sub">Your university services in one place.</p>
+<div class="c hero"><div class="big">SU</div>
+<div><b style="font-size:17px">Student User</b> <span class="chip ok">Active</span><div class="sub" style="margin:4px 0 0">Student ID: NEIP-UNI-004217<br>Yangon Technological University · Faculty of Computing<br>BSc Computer Science · Software specialization</div></div>
+<div><div class="l">Academic Year</div><b>2025 – 2026</b></div><div><div class="l">Year / Semester</div><b>Year 3 · Sem 2</b></div><div><div class="l">GPA</div><b>3.42</b></div>
+<div class="ban">Yangon Technological University</div></div>
+
+<div class="g g4">
+<div class="c"><div class="l">ENROLMENT</div><div class="v ok">Active</div></div>
+<div class="c"><div class="l">FEE STATUS</div><div class="v pr">Up to date</div></div>
+<div class="c"><div class="l">OPEN REQUESTS</div><div class="v pr">3</div></div>
+<div class="c"><div class="l">ATTENDANCE</div><div class="v pr">94%</div></div>
+</div>
+
+<div class="g g32">
+<div class="c"><h2>Today · Next up</h2><div class="sc"><table>
+<tr><th>Time</th><th>Item</th><th>Type</th></tr>
+<tr><td>09:00</td><td>Data Structures — Live class</td><td>Class</td></tr>
+<tr><td>13:00</td><td>Database Quiz 3</td><td>Quiz</td></tr>
+<tr><td>Fri</td><td>Software Eng. assignment due</td><td>Deadline</td></tr>
+<tr><td>Nov 18</td><td>Mid-term: Algorithms</td><td>Exam</td></tr></table></div></div>
+<div class="c"><h2>Recent Activity</h2>
+<div class="row"><div><b>Transcript request</b><br><span class="sub">2 days ago</span></div><span class="chip in">Received</span></div>
+<div class="row"><div><b>Hostel request</b><br><span class="sub">4 days ago</span></div><span class="chip wa">Under review</span></div>
+<div class="row"><div><b>Fee receipt</b><br><span class="sub">Last week</span></div><span class="chip ok">Available</span></div></div>
+</div>
+
+<div class="c"><h2>Quick Services</h2><div class="g g3" style="margin:0">
+<button class="svc" data-go="Fees & Payments"><b>Fee Payment</b><span>Pay fees, view history</span></button>
+<button class="svc" data-go="Exams & Results"><b>Exam Results</b><span>Results and transcripts</span></button>
+<button class="svc" data-go="Verification"><b>Certificate Verification</b><span>Request and verify</span></button>
+<button class="svc" data-go="Benefits"><b>Scholarships</b><span>Apply for support</span></button>
+<button class="svc" data-go="Campus Life"><b>Hostel & Transport</b><span>Bus, hostel, meals</span></button>
+<button class="svc" data-go="Student Affairs"><b>Leave / Transfer</b><span>Student affairs requests</span></button>
+</div></div>
+
+<div class="g g32">
+<div class="c"><h2>My Education Record</h2>
+<div class="tl"><div class="d">Primary<br>Grade 1–5</div><div class="d">Middle<br>Grade 6–9</div><div class="d">High School<br>Grade 10–12</div><div class="n">University<br>(current)</div><div>Graduate<br>& Beyond</div></div>
+<p class="sub" style="margin:14px 0 4px">Degree progress: 96 of 144 credits</p><div class="bar"><i style="width:67%"></i></div></div>
+<div class="c"><h2>Announcements</h2>
+<div class="row"><span>Mid-term exam schedule released</span><span class="sub">Oct 10</span></div>
+<div class="row"><span>2026 scholarship programme open</span><span class="sub">Oct 05</span></div>
+<div class="row"><span>Hostel allocation for Semester 2</span><span class="sub">Oct 01</span></div></div>
+</div>
+</section>
+
+<section class="page" data-title="My Profile" data-icon="👤">
+<h1>My Profile & Registry</h1><p class="sub">One Student ID across every school and university.</p>
+<div class="g g32">
+<div class="c"><h2>Personal details</h2><div class="sc"><table>
+<tr><td class="l">Name</td><td>Student User</td></tr>
+<tr><td class="l">National ID</td><td>12/XXX(N)000000</td></tr>
+<tr><td class="l">Date of birth</td><td>14 Mar 2005</td></tr>
+<tr><td class="l">Phone</td><td>+95 9 *** *** 421</td></tr>
+<tr><td class="l">Address</td><td>Yangon Region</td></tr></table></div></div>
+<div class="c ctr"><div class="qr"></div><b>NEIP-UNI-004217</b><p class="sub">Digital Student ID. Scan to verify.</p><button class="btn">Download ID card</button></div>
+</div>
+<div class="c"><h2>Academic history (national registry)</h2><div class="sc"><table>
+<tr><th>Level</th><th>Institution</th><th>Years</th><th>Status</th></tr>
+<tr><td>Primary</td><td>BEPS No.3, Yangon</td><td>2010–2015</td><td><span class="chip ok">Completed</span></td></tr>
+<tr><td>Middle</td><td>BEMS No.1, Yangon</td><td>2015–2019</td><td><span class="chip ok">Completed</span></td></tr>
+<tr><td>High school</td><td>BEHS No.2, Yangon</td><td>2019–2022</td><td><span class="chip ok">Completed</span></td></tr>
+<tr><td>University</td><td>Yangon Technological University</td><td>2023–now</td><td><span class="chip in">Active</span></td></tr></table></div></div>
+</section>
+
+<section class="page" data-title="Admissions" data-icon="📝">
+<h1>Admissions</h1><p class="sub">Entrance enquiry, submission and specialization selection.</p>
+<div class="c"><h2>Progress</h2><div class="trk" data-step="3"></div><p class="sub">Your Year 3 specialization is confirmed.</p></div>
+<div class="g g2">
+<div class="c"><h2>Specialization selection</h2><div class="g g2" style="margin:0">
+<div class="svc"><b>Software</b><span>Web, mobile, AI, software engineering</span><br><span class="chip ok">Selected</span></div>
+<div class="svc"><b>Hardware</b><span>Embedded, networks, electronics</span><br><button class="btn s" style="margin-top:6px">Request change</button></div></div></div>
+<div class="c"><h2>Entrance enquiry</h2>
+<label>Programme of interest<input placeholder="e.g. BSc Computer Science"></label>
+<label>Question<textarea rows="3"></textarea></label><button class="btn">Send enquiry</button></div>
+</div>
+</section>
+
+<section class="page" data-title="Learning" data-icon="🎓">
+<h1>Learning (LMS)</h1><p class="sub">Classes, quizzes, recordings and resources.</p>
+<div class="g g32">
+<div class="c"><h2>Live now & upcoming</h2><div class="sc"><table>
+<tr><th>Course</th><th>Time</th><th>Type</th><th></th></tr>
+<tr><td>Data Structures</td><td>Today 09:00</td><td>Live</td><td><button class="btn">Join</button></td></tr>
+<tr><td>Databases</td><td>Today 13:00</td><td>Quiz</td><td><button class="btn s">Open</button></td></tr>
+<tr><td>Software Eng.</td><td>Fri 10:00</td><td>Live</td><td><button class="btn s">Remind</button></td></tr></table></div></div>
+<div class="c"><h2>Weekly timetable</h2><div class="tt">
+<div class="h"></div><div class="h">Mon</div><div class="h">Tue</div><div class="h">Wed</div><div class="h">Thu</div><div class="h">Fri</div>
+<div class="h">9:00</div><div class="cl">DS</div><div></div><div class="cl">DB</div><div></div><div class="cl">SE</div>
+<div class="h">13:00</div><div></div><div class="cl">Algo</div><div></div><div class="cl">DS</div><div></div></div></div>
+</div>
+<div class="g g2">
+<div class="c"><h2>Assignments & quizzes</h2><div class="sc"><table>
+<tr><th>Task</th><th>Due</th><th>Status</th><th>Grade</th></tr>
+<tr><td>Algo problem set 4</td><td>Oct 20</td><td><span class="chip wa">Pending</span></td><td>—</td></tr>
+<tr><td>DB Quiz 2</td><td>Oct 08</td><td><span class="chip ok">Completed</span></td><td>18/20 (auto)</td></tr>
+<tr><td>SE Report</td><td>Oct 24</td><td><span class="chip in">Open</span></td><td>—</td></tr></table></div></div>
+<div class="c"><h2>Course progress</h2>
+<div class="row"><span>Data Structures</span><span class="sub">78%</span></div><div class="bar"><i style="width:78%"></i></div>
+<div class="row"><span>Databases</span><span class="sub">64%</span></div><div class="bar"><i style="width:64%"></i></div>
+<div class="row"><span>Software Eng.</span><span class="sub">41%</span></div><div class="bar"><i style="width:41%"></i></div></div>
+</div>
+<div class="c"><h2>Recordings, resources & certification</h2><div class="g g3" style="margin:0">
+<button class="svc"><b>Past class videos</b><span>128 recordings</span></button>
+<button class="svc"><b>Resource library</b><span>Books, notes, slides</span></button>
+<button class="svc"><b>Certification</b><span>2 earned, 1 in progress</span></button></div></div>
+</section>
+
+<section class="page" data-title="Exams & Results" data-icon="📊">
+<h1>Exams & Results</h1><p class="sub">Results, transcripts and past papers.</p>
+<div class="g g3">
+<div class="c"><div class="l">CGPA</div><div class="v pr">3.42</div></div>
+<div class="c"><div class="l">CREDITS EARNED</div><div class="v">96 / 144</div></div>
+<div class="c"><div class="l">NEXT EXAM</div><div class="v">Nov 18</div></div></div>
+<div class="c"><div class="row"><h2>Semester 1 results</h2><button class="btn s">Download transcript</button></div><div class="sc"><table>
+<tr><th>Course</th><th>Credits</th><th>Mark</th><th>Grade</th></tr>
+<tr><td>Data Structures</td><td>4</td><td>86</td><td>A</td></tr>
+<tr><td>Databases</td><td>3</td><td>79</td><td>B+</td></tr>
+<tr><td>Software Eng.</td><td>3</td><td>91</td><td>A</td></tr>
+<tr><td>Networks</td><td>3</td><td>72</td><td>B</td></tr></table></div></div>
+<div class="g g2">
+<div class="c"><h2>Request official transcript</h2><label>Copies<input placeholder="1"></label><label>Delivery<input placeholder="Digital / Hardcopy"></label><button class="btn">Submit request</button></div>
+<div class="c"><h2>Past papers</h2><div class="sc"><table>
+<tr><th>Course</th><th>Years</th><th></th></tr>
+<tr><td>Data Structures</td><td>2019–2025</td><td><a class="pr" href="#">View</a></td></tr>
+<tr><td>Databases</td><td>2019–2025</td><td><a class="pr" href="#">View</a></td></tr>
+<tr><td>Algorithms</td><td>2020–2025</td><td><a class="pr" href="#">View</a></td></tr></table></div></div>
+</div>
+</section>
+
+<section class="page" data-title="Fees & Payments" data-icon="💳">
+<h1>Fees & Payments</h1><p class="sub">Channels, history and receipts.</p>
+<div class="g g3">
+<div class="c"><div class="l">BALANCE</div><div class="v ok">0 MMK</div></div>
+<div class="c"><div class="l">NEXT FEE DUE</div><div class="v">Jan 15, 2027</div></div>
+<div class="c"><div class="l">PAID THIS YEAR</div><div class="v">850,000 MMK</div></div></div>
+<div class="g g32">
+<div class="c"><h2>Payment history</h2><div class="sc"><table>
+<tr><th>Date</th><th>Item</th><th>Amount</th><th>Status</th><th></th></tr>
+<tr><td>Oct 02</td><td>Tuition S2</td><td>450,000</td><td><span class="chip ok">Paid</span></td><td><a class="pr" href="#">Receipt</a></td></tr>
+<tr><td>Jun 10</td><td>Hostel fee</td><td>150,000</td><td><span class="chip ok">Paid</span></td><td><a class="pr" href="#">Receipt</a></td></tr>
+<tr><td>Jun 10</td><td>Tuition S1</td><td>400,000</td><td><span class="chip ok">Paid</span></td><td><a class="pr" href="#">Receipt</a></td></tr></table></div></div>
+<div class="c"><h2>Pay by channel</h2>
+<button class="svc" style="margin-bottom:8px"><b>KBZPay</b></button><button class="svc" style="margin-bottom:8px"><b>Wave Pay</b></button>
+<button class="svc" style="margin-bottom:8px"><b>CB Pay</b></button><button class="svc" style="margin-bottom:8px"><b>Bank transfer</b></button><button class="svc"><b>Cash at office</b></button></div>
+</div>
+</section>
+
+<section class="page" data-title="Campus Life" data-icon="🏫">
+<h1>Campus Life</h1><p class="sub">Accommodation and campus services.</p>
+<div class="g g3">
+<div class="c"><h2>Hostel</h2><b>Block C · Room 214</b><p class="sub">Shared · 2 beds</p><span class="chip ok">Active</span></div>
+<div class="c"><h2>Bus</h2><b>Route 7 · Hlaing → Campus</b><p class="sub">Pickup 07:15</p><span class="chip ok">Active</span></div>
+<div class="c"><h2>Meals</h2><b>Lunch plan</b><p class="sub">Mon–Fri</p><span class="chip ok">Active</span></div></div>
+<div class="g g4">
+<button class="svc"><b>Clinic</b><span>Book appointment</span></button><button class="svc"><b>Library</b><span>Loans & reservations</span></button>
+<button class="svc"><b>Sports</b><span>Teams & facilities</span></button><button class="svc"><b>Art programme</b><span>Clubs & events</span></button></div>
+<div class="c"><div class="row"><h2>Clinic appointments</h2><button class="btn">Book</button></div><div class="sc"><table>
+<tr><th>Date</th><th>Service</th><th>Status</th></tr>
+<tr><td>Oct 22, 10:30</td><td>General check-up</td><td><span class="chip ok">Approved</span></td></tr>
+<tr><td>Sep 03</td><td>Vaccination</td><td><span class="chip ok">Completed</span></td></tr></table></div></div>
+</section>
+
+<section class="page" data-title="Benefits" data-icon="🏅">
+<h1>Benefits & Scholarships</h1><p class="sub">Apply for support and internships.</p>
+<div class="g g2">
+<div class="c"><h2>Scholarships</h2><div class="sc"><table>
+<tr><th>Programme</th><th>Deadline</th><th></th></tr>
+<tr><td>2026 National Merit</td><td>Dec 15</td><td><button class="btn">Apply</button></td></tr>
+<tr><td>Computing Excellence</td><td>Nov 30</td><td><button class="btn s">Details</button></td></tr></table></div></div>
+<div class="c"><div class="row"><h2>Internships</h2><button class="btn s">New request</button></div><div class="sc"><table>
+<tr><th>Company</th><th>Role</th><th>Status</th></tr>
+<tr><td>Local software firm</td><td>Dev intern</td><td><span class="chip wa">Under review</span></td></tr>
+<tr><td>Telecom provider</td><td>Network intern</td><td><span class="chip in">Received</span></td></tr></table></div></div>
+</div>
+<div class="c"><h2>My applications</h2><div class="trk" data-step="2"></div><p class="sub">Scholarship application #SCH-0312</p></div>
+</section>
+
+<section class="page" data-title="Verification" data-icon="✅">
+<h1>Verification & Certificates</h1><p class="sub">Letters, verification and reissue.</p>
+<div class="g g3">
+<button class="svc"><b>Recommendation letter</b><span>Request from faculty</span></button>
+<button class="svc"><b>Verify a certificate</b><span>Share a code or QR</span></button>
+<button class="svc"><b>Reissue hardcopy</b><span>Lost or damaged</span></button></div>
+<div class="g g32">
+<div class="c"><h2>My requests</h2><div class="sc"><table>
+<tr><th>ID</th><th>Type</th><th>Status</th></tr>
+<tr><td>VR-1102</td><td>Recommendation letter</td><td><span class="chip wa">Under review</span></td></tr>
+<tr><td>VR-1087</td><td>Verification for employer</td><td><span class="chip ok">Completed</span></td></tr>
+<tr><td>VR-1054</td><td>Hardcopy reissue</td><td><span class="chip in">Received</span></td></tr></table></div></div>
+<div class="c ctr"><div class="qr"></div><b>Verification code</b><p class="sub">VER-8F3K-29QX<br>Valid 30 days</p></div>
+</div>
+</section>
+
+<section class="page" data-title="Student Affairs" data-icon="📋">
+<h1>Student Affairs</h1><p class="sub">Leave, postpone, rejoin, transfer, attendance.</p>
+<div class="g g4">
+<div class="c"><div class="l">ATTENDANCE</div><div class="v pr">94%</div></div>
+<div class="c"><div class="l">LEAVE USED</div><div class="v">3 days</div></div>
+<div class="c"><div class="l">ABSENCES</div><div class="v">2</div></div>
+<div class="c"><div class="l">OPEN REQUESTS</div><div class="v">3</div></div></div>
+<div class="g g2">
+<div class="c"><h2>New request</h2>
+<label>Type<input placeholder="Leave / Postpone / Rejoin / Transfer"></label>
+<label>Reason<textarea rows="3"></textarea></label>
+<label>Attach document<input placeholder="Choose file"></label><button class="btn">Submit request</button></div>
+<div class="c"><h2>Request history</h2><div class="sc"><table>
+<tr><th>Type</th><th>Date</th><th>Status</th></tr>
+<tr><td>Leave</td><td>Oct 12</td><td><span class="chip ok">Approved</span></td></tr>
+<tr><td>Transfer enquiry</td><td>Oct 03</td><td><span class="chip wa">Under review</span></td></tr>
+<tr><td>Leave</td><td>Sep 02</td><td><span class="chip ok">Completed</span></td></tr></table></div><div class="trk" data-step="2"></div></div>
+</div>
+<div class="c"><h2>Attendance by course</h2><div class="sc"><table>
+<tr><th>Course</th><th>Attended</th><th>%</th></tr>
+<tr><td>Data Structures</td><td>27/28</td><td>96%</td></tr>
+<tr><td>Databases</td><td>24/26</td><td>92%</td></tr>
+<tr><td>Software Eng.</td><td>25/27</td><td>93%</td></tr></table></div></div>
+</section>
+
+<section class="page" data-title="Help & Support" data-icon="❓">
+<h1>Help & Support</h1><p class="sub">Tickets for quick issues, complaints for formal cases.</p>
+<div class="g g32">
+<div class="c"><h2>My tickets</h2><div class="sc"><table>
+<tr><th>ID</th><th>Issue</th><th>Status</th></tr>
+<tr><td>T-5521</td><td>Cannot access LMS course</td><td><span class="chip in">Open</span></td></tr>
+<tr><td>T-5490</td><td>Receipt mismatch</td><td><span class="chip ok">Completed</span></td></tr>
+<tr><td>C-0071</td><td>Complaint: hostel facilities</td><td><span class="chip wa">Under review</span></td></tr></table></div></div>
+<div class="c"><h2>Raise an issue</h2>
+<label>Category<input placeholder="LMS / Fees / Hostel / Other"></label>
+<label>Describe the problem<textarea rows="3"></textarea></label>
+<button class="btn">Submit ticket</button> <button class="btn s">Escalate to complaint</button></div>
+</div>
+</section>
+
+<section class="page" data-title="Messages" data-icon="✉️" data-badge="3">
+<h1>Messages</h1><p class="sub">Notices and replies from offices.</p>
+<div class="c"><h2>Inbox</h2>
+<div class="row"><div><span class="dot"></span><b>Registrar</b> · Your transcript request was received</div><span class="sub">2 d</span></div>
+<div class="row"><div><span class="dot"></span><b>Finance office</b> · Receipt for Tuition S2 is available</div><span class="sub">1 w</span></div>
+<div class="row"><div><span class="dot"></span><b>Student Affairs</b> · Hostel request is under review</div><span class="sub">4 d</span></div>
+<div class="row"><div><b>Faculty</b> · Assignment 4 feedback posted</div><span class="sub">2 w</span></div></div>
+</section>
+
+<!-- ===================== PAGES END HERE ===================== -->
+
+</div></main></div>
+
+<script>
+/* You normally do not need to edit anything below this line. */
+const pages=[...document.querySelectorAll('.page')];
+const nav=document.getElementById('nav');
+nav.innerHTML='<div class="logo">NEIP<small>National Education Information Platform</small></div>'+
+ pages.map(p=>`<button data-go="${p.dataset.title}">${p.dataset.icon||''} ${p.dataset.title}${p.dataset.badge?`<span class="bd">${p.dataset.badge}</span>`:''}</button>`).join('');
+document.querySelectorAll('.trk').forEach(t=>{t.innerHTML=['Submitted','Under review','Approved','Completed'].map((s,i)=>`<span class="${i<+t.dataset.step?'d':''}">${s}</span>`).join('')});
+function go(name){
+  const target=pages.find(p=>p.dataset.title===name)||pages[0];
+  pages.forEach(p=>p.classList.toggle('show',p===target));
+  nav.querySelectorAll('button[data-go]').forEach(b=>b.classList.toggle('on',b.dataset.go===target.dataset.title));
+  document.getElementById('crumb').textContent='Student Portal / '+target.dataset.title;
+  scrollTo(0,0);
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go)});
+document.getElementById('theme').onclick=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='dark'?'light':'dark'};
+go(pages[0].dataset.title);
+</script></body></html>
